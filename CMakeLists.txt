@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(service_template CXX)
+project(eng_learning CXX)
 
 include(third_party/userver/cmake/SetupEnvironment.cmake)
 include(GNUInstallDirs)
@@ -9,6 +9,10 @@ add_subdirectory(third_party/userver)
 
 # Common sources
 add_library(${PROJECT_NAME}_objs OBJECT
+	src/v1/util/task/task.hpp
+	src/v1/util/task/task.cpp
+	src/v1/random/view.hpp
+	src/v1/random/view.cpp
     src/hello.hpp
     src/hello.cpp
 )

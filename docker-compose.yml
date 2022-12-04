@@ -1,7 +1,7 @@
 version: "2.3"
 
 services:
-    service_template:
+    eng_learning:
         image: ghcr.io/userver-framework/docker-userver-build-base:v1a
         privileged: true
         network_mode: bridge
@@ -17,6 +17,7 @@ services:
           - CORES_DIR=/cores
           - CXX
           - MAKE_OPTS
+          - CODE=60e77101e76950a9b1830fa107fd2f8fc545255b3e0f14b6a7797cf9ee005f07
         volumes:
           - .:/service_template:rw
           - ./third_party/userver/tools/docker:/tools:ro
