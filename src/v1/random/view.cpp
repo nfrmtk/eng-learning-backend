@@ -37,7 +37,7 @@ class Random final : public userver::server::handlers::HttpHandlerBase {
       return {};
     }
     std::vector<std::filesystem::directory_entry> all_tasks =
-        GetTasks(request.GetHeader("task-type"));
+        GetAllTasksByType(request.GetHeader("task-type"));
 
     std::default_random_engine re(std::chrono::system_clock::now().time_since_epoch().count());
 

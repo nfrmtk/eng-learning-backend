@@ -8,6 +8,7 @@
 
 #include "hello.hpp"
 #include "./v1/random/view.hpp"
+#include "./v1/all-types/view.hpp"
 int main(int argc, char* argv[]) {
   auto component_list = userver::components::MinimalServerComponentList()
                             .Append<userver::server::handlers::Ping>()
@@ -17,5 +18,6 @@ int main(int argc, char* argv[]) {
 
   eng_learning::AppendHello(component_list);
   eng_learning::AppendRandom(component_list);
+  eng_learning::AppendAllTypes(component_list);
   return userver::utils::DaemonMain(argc, argv, component_list);
 }

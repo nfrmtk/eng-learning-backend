@@ -8,7 +8,7 @@ services:
         environment:
           - PREFIX=${PREFIX:-~/.local}
           - CC
-          - CCACHE_DIR=/service_template/.ccache
+          - CCACHE_DIR=/eng_learning/.ccache
           - CCACHE_HASHDIR
           - CCACHE_NOHASHDIR
           - CCACHE_PREFIX
@@ -19,10 +19,10 @@ services:
           - MAKE_OPTS
           - CODE=60e77101e76950a9b1830fa107fd2f8fc545255b3e0f14b6a7797cf9ee005f07
         volumes:
-          - .:/service_template:rw
+          - .:/eng_learning:rw
           - ./third_party/userver/tools/docker:/tools:ro
         ports:
           - 8080:8080
-        working_dir: /service_template
+        working_dir: /eng_learning
         entrypoint:
           - /tools/run_as_user.sh

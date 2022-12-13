@@ -66,3 +66,8 @@ components_manager:
             path: /v1/random
             method: GET
             task_processor: fs-task-processor
+
+        handler-all-types:
+            path: /v1/all-types
+            method: GET
+            task_processor: main-task-processor

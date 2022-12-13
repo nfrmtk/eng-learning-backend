@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <userver/utils/assert.hpp>
 namespace fs = std::filesystem;
-std::vector<fs::directory_entry> eng_learning::GetTasks(
+std::vector<fs::directory_entry> eng_learning::GetAllTasksByType(
     const std::string& task_type) {
   std::vector<fs::directory_entry> answer = {};
   static std::unordered_map<std::string, TaskType> mapping = {
@@ -15,7 +15,7 @@ std::vector<fs::directory_entry> eng_learning::GetTasks(
       {"PAST_SIMPLE", TaskType::kPastSimple},
       {"PRESENT_SIMPLE", TaskType::kPresentSimple}};
 
-  constexpr std::string_view TASKS_DIR = "./tasks";
+  constexpr std::string_view TASKS_DIR = "/eng_learning/tasks";
   std::string_view thing = "asg";
   auto type = mapping[task_type];
   switch (type) {
