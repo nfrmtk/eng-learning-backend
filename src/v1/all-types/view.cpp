@@ -3,12 +3,12 @@
 //
 #include "view.hpp"
 
-#include <userver/server/handlers/http_handler_base.hpp>
-#include <userver/formats/serialize/common_containers.hpp>
-#include <userver/logging/log.hpp>
-#include <userver/formats/json/serialize.hpp>
 #include <filesystem>
 #include <random>
+#include <userver/formats/json/serialize.hpp>
+#include <userver/formats/serialize/common_containers.hpp>
+#include <userver/logging/log.hpp>
+#include <userver/server/handlers/http_handler_base.hpp>
 namespace eng_learning {
 namespace {
 namespace fs = std::filesystem;
@@ -29,12 +29,13 @@ class AllTypes final : public userver::server::handlers::HttpHandlerBase {
     }
 
     userver::formats::json::ValueBuilder builder;
-    for (auto& entry: fs::directory_iterator("/eng_learning/tasks")){
-      LOG_DEBUG() << fmt::format("hello from for loop =), {} is the ", entry.path().string());
+    for (auto& entry : fs::directory_iterator("/eng_learning/tasks")) {
+      LOG_DEBUG() << fmt::format("hello from for loop =), {} is the ",
+                                 entry.path().string());
       userver::formats::json::ValueBuilder name;
       if (!entry.is_directory()) continue;
       std::string thing = entry.path().filename();
-      //thing = thing.substr(1, thing.size() - 2);
+      // thing = thing.substr(1, thing.size() - 2);
       name["name"] = thing;
       builder.PushBack(std::move(name));
     }

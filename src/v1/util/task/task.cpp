@@ -29,10 +29,9 @@ std::vector<fs::directory_entry> eng_learning::GetAllTasksByType(
       }
       return answer;
     }
-    case TaskType::kPastSimple:{
+    case TaskType::kPastSimple: {
       auto past_simple_path = (fs::path)TASKS_DIR / "past-simple";
-      for (const auto& entry :
-           fs::directory_iterator(past_simple_path)) {
+      for (const auto& entry : fs::directory_iterator(past_simple_path)) {
         if (entry.path().extension() == ".json") answer.push_back(entry);
       }
       return answer;
@@ -47,8 +46,7 @@ std::vector<fs::directory_entry> eng_learning::GetAllTasksByType(
     }
     case TaskType::kFutureSimple: {
       auto future_simple_path = (fs::path)TASKS_DIR / "future-simple";
-      for (const auto& entry :
-           fs::directory_iterator(future_simple_path)) {
+      for (const auto& entry : fs::directory_iterator(future_simple_path)) {
         if (entry.path().extension() == ".json") answer.push_back(entry);
       }
       return answer;
