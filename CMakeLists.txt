@@ -13,11 +13,12 @@ add_library(${PROJECT_NAME}_objs OBJECT
 		src/v1/util/task/task.cpp
 		src/v1/all-types/view.hpp
 		src/v1/all-types/view.cpp
-		src/v1/random/view.hpp
-		src/v1/random/view.cpp
+		src/v1/specific/view.hpp
+		src/v1/specific/view.cpp
     	src/hello.hpp
     	src/hello.cpp
-)
+        src/v1/description/view.cpp
+		src/v1/description/view.hpp)
 target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver-core)
 
 

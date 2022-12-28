@@ -5,5 +5,5 @@
 
 namespace eng_learning {
 
-void AppendRandom(userver::components::ComponentList& components);
+void AppendSpecific(userver::components::ComponentList& components);
 }

@@ -6,29 +6,41 @@ info:
 servers:
   -   url: http://localhost:8080/
 paths:
-  /v1/random:
+  /v1/types:
     get:
       parameters:
-        -  name: count
-           in: header
-           description: returned sarray size
-           schema:
-             type: integer
+        - name: code
+          in: header
+          description: secret
+          schema:
+            type: string
+      description: get all existing folders in tasks folder
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: all task types
+                items:
+                  type: string
+        401:
+          description: Unauthorized
+
+  /v1/{task-type}/all-tasks:
+    get:
+      parameters:
         -  name: code
            in: header
            description: code word
            schema:
              type: string
         -  name: task-type
-           in: header
+           in: path
            description: on of many-many task types
            schema:
              type: string
-             enum:
-               - ANY
-               - PRESENT_SIMPLE
-               - PAST_SIMPLE
-               - FUTURE_SIMPLE
       description: returns random task of task-type
       responses:
         '200':
@@ -38,6 +50,7 @@ paths:
               application/json:
                 schema:
                   type: array
+                  description: task with answer
                   items:
                     type: object
                     properties:
@@ -56,15 +69,22 @@ paths:
                       correct:
                         description: number of correct answer
                         type: integer
-                    description: task with answer
-
-
-
-
-
         '401':
-          description: unauthorised
-
-
-
-
+          description: Unauthorised
+  /v1/{task-type}/description:
+    get:
+      parameters:
+        - name: code
+          in: header
+          description: code word
+      responses:
+        200:
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        401:
+          description: Unauthorised
+        400:
+          description: no such description file

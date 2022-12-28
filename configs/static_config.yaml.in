@@ -62,12 +62,19 @@ components_manager:
             method: GET,POST              # It will only reply to GET (HEAD) and POST requests.
             task_processor: main-task-processor  # Run it on CPU bound task processor
 
-        handler-random:
-            path: /v1/random
+        handler-all-types:
+            path: /v1/types
+            method: GET
+            task_processor: main-task-processor
+
+        handler-type-all:
+            path: /v1/{task-type}/all
             method: GET
             task_processor: fs-task-processor
 
-        handler-all-types:
-            path: /v1/all-types
+        handler-type-description:
+            path: /v1/{task-type}/description
             method: GET
-            task_processor: main-task-processor
+            task_processor: fs-task-processor
+
+

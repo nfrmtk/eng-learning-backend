@@ -6,9 +6,10 @@ services:
         privileged: true
         network_mode: bridge
         environment:
+          - WORKING_DIRECTORY=$WORKING_DIRECTORY
           - PREFIX=${PREFIX:-~/.local}
           - CC
-          - CCACHE_DIR=/eng_learning/.ccache
+          - CCACHE_DIR=$WORKING_DIRECTORY/.ccache
           - CCACHE_HASHDIR
           - CCACHE_NOHASHDIR
           - CCACHE_PREFIX
@@ -19,10 +20,10 @@ services:
           - MAKE_OPTS
           - CODE=60e77101e76950a9b1830fa107fd2f8fc545255b3e0f14b6a7797cf9ee005f07
         volumes:
-          - .:/eng_learning:rw
+          - .:$WORKING_DIRECTORY:rw
           - ./third_party/userver/tools/docker:/tools:ro
         ports:
           - 8080:8080
-        working_dir: /eng_learning
+        working_dir: $WORKING_DIRECTORY
         entrypoint:
           - /tools/run_as_user.sh
