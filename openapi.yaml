@@ -28,7 +28,7 @@ paths:
         401:
           description: Unauthorized
 
-  /v1/{task-type}/all-tasks:
+  /v1/{task-type}/all:
     get:
       parameters:
         -  name: code

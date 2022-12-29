@@ -1,9 +1,10 @@
-version: "2.3"
+  version: "2.3"
 
 services:
     eng_learning:
         image: ghcr.io/userver-framework/docker-userver-build-base:v1a
         privileged: true
+        restart: always
         network_mode: bridge
         environment:
           - WORKING_DIRECTORY=$WORKING_DIRECTORY
